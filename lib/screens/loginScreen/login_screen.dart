@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/appColors/app_colors.dart';
+import 'package:e_commerce_app/mybottombar/my_bottom_bar.dart';
 import 'package:e_commerce_app/styles/login_screen_styles.dart';
 import 'package:e_commerce_app/svgimages/svg_images.dart';
 import 'package:e_commerce_app/widgets/my_button_widget.dart';
@@ -17,95 +18,89 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
- Widget buildTopPart(){
-   return Column(
-     children: [
-       Image.asset(
-           "images/Logo.png",
-             width: 350,
-             height: 300,
-
-       ),
-       Column(
-         children: [
-           MyTextFromField(
-               hintText: "E-mail",
-               obscureText: false,
-           ),
-           MyTextFromField(
-             hintText: "Password",
-             obscureText: true,
-           ),
-         ],
-       ),
-       Container(
-         margin: const EdgeInsets.symmetric(horizontal: 20),
-         child: Row(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Expanded(
-                 child: MyButtonWidget(
-                   text: "Sign in",
-                   color: AppColors.baseBlackColor,
-                   onPress: () {
-                     PageRouting.goToNextPage(
-                       context: context,
-                       navigateTo: const HomePage(),
-                     );
-
-                   },
-                 ),
-             ),
-             const SizedBox(
-               width: 20,
-             ),
-             Expanded(
-               child: MyButtonWidget(
-                 text: "Sign up",
-                 color: AppColors.baseDarkPinkColor,
-                 onPress: () {
-                   PageRouting.goToNextPage(
-                     context: context,
-                     navigateTo: const SignupScreen(),
-                   );
-                 },
-               ),
-             ),
-           ],
-         ),
-       ),
+  Widget buildTopPart() {
+    return Column(
+      children: [
+        Image.asset(
+          "images/Logo.png",
+          width: 350,
+          height: 300,
+        ),
+        Column(
+          children: [
+            MyTextFromField(
+              hintText: "E-mail",
+              obscureText: false,
+            ),
+            MyTextFromField(
+              hintText: "Password",
+              obscureText: true,
+            ),
+          ],
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: MyButtonWidget(
+                  text: "Sign in",
+                  color: AppColors.baseBlackColor,
+                  onPress: () {
+                    PageRouting.goToNextPage(
+                      context: context,
+                      navigateTo: const MyBottomBar(),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: MyButtonWidget(
+                  text: "Sign up",
+                  color: AppColors.baseDarkPinkColor,
+                  onPress: () {
+                    PageRouting.goToNextPage(
+                      context: context,
+                      navigateTo: const SignupScreen(),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
         const SizedBox(
           height: 20,
         ),
-       const Text(
-         "Forget Password?",
-         style: LoginScreenStyles.forgotPasswordStyles,
-       ),
-     ],
-   );
- }
-
+        const Text(
+          "Forget Password?",
+          style: LoginScreenStyles.forgotPasswordStyles,
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
           child: Center(
-            child: ListView(
-              physics: const BouncingScrollPhysics() ,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    buildTopPart(),
-
-                  ],
-                )
+                buildTopPart(),
               ],
-            ),
-          )),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
-

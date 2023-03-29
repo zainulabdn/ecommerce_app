@@ -1,4 +1,3 @@
-
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:e_commerce_app/appColors/app_colors.dart';
 import 'package:e_commerce_app/styles/home_screen_styles.dart';
@@ -16,7 +15,7 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   AppBar buildAppBar() {
     return AppBar(
-      bottom:  const TabBar(
+      bottom: const TabBar(
         labelPadding: EdgeInsets.symmetric(horizontal: 22),
         indicator: BoxDecoration(
           color: Colors.transparent,
@@ -36,9 +35,11 @@ class HomePage extends StatelessWidget {
           Text("Accessories"),
         ],
       ),
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.black,
       elevation: 0.0,
+      centerTitle: true,
       title: Column(
         children: const [
           Text(
@@ -53,9 +54,9 @@ class HomePage extends StatelessWidget {
       ),
       actions: [
         IconButton(
-          onPressed: (){},
+          onPressed: () {},
           icon: RotationTransition(
-            turns: const AlwaysStoppedAnimation(90/360),
+            turns: const AlwaysStoppedAnimation(90 / 360),
             child: SvgPicture.asset(
               SvgImages.filter,
               color: AppColors.baseBlackColor,
@@ -69,13 +70,14 @@ class HomePage extends StatelessWidget {
             color: AppColors.baseBlackColor,
             width: 30,
           ),
-          onPressed: (){},
+          onPressed: () {},
         ),
       ],
     );
   }
-  Widget  buildAdvertismentPlace() {
-    return  Padding(
+
+  Widget buildAdvertismentPlace() {
+    return Padding(
       padding: const EdgeInsets.all(18.0),
       child: SizedBox(
         height: 170,
@@ -87,43 +89,38 @@ class HomePage extends StatelessWidget {
           images: [
             Container(
               margin: const EdgeInsets.only(right: 10),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: NetworkImage(
-                      "images/mens.png"
-                  ),
+                  image: NetworkImage("images/mens.png"),
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             Container(
               margin: const EdgeInsets.only(right: 10),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 image: const DecorationImage(
                   image: NetworkImage(
-                      "https://assets-static.invideo.io/images/large/Creative_Clothing_Advertisement_Ideas_To_Boost_Sales_revised_3_1_cefa9cda88.png"
-                  ),
+                      "https://assets-static.invideo.io/images/large/Creative_Clothing_Advertisement_Ideas_To_Boost_Sales_revised_3_1_cefa9cda88.png"),
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             Container(
               margin: const EdgeInsets.only(right: 10),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: NetworkImage(
-                      "images/shoes ad.png"
-                  ),
+                  image: NetworkImage("images/shoes ad.png"),
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),
           ],
         ),
-
       ),
     );
   }
+
   Widget buildTrendingProduct({
     required String productImage,
     required String productName,
@@ -191,6 +188,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -203,61 +201,61 @@ class HomePage extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   buildAdvertismentPlace(),
-                  ShowAllWidget(
-                      leftText: "New Arrival"
-                  ),
-                  Padding(padding: const EdgeInsets.symmetric(
-                      horizontal:12.0
-                  ),
+                  ShowAllWidget(leftText: "New Arrival"),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: GridView.builder(
-                        shrinkWrap: true,
-                        primary: true,
-                        itemCount: singleProductData.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.7,
-                        ),
-                        itemBuilder: (context,index) {
-                          var data = singleProductData[index];
-                          return SingleProductWidget(
-                            onPressed: () {
-
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) =>DetailScreen(
-                                    data: data,)));
-                            },
-                            productImage: data.productImage,
-                            productModel: data.productModel,
-                            productName: data.productName,
-                            productOldPrice: data.productOldPrice,
-                            productPrice: data.productPrice ,
-                          );
-                        },
-                        ),
+                      shrinkWrap: true,
+                      primary: true,
+                      itemCount: singleProductData.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.7,
+                      ),
+                      itemBuilder: (context, index) {
+                        var data = singleProductData[index];
+                        return SingleProductWidget(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailScreen(
+                                          data: data,
+                                        )));
+                          },
+                          productImage: data.productImage,
+                          productModel: data.productModel,
+                          productName: data.productName,
+                          productOldPrice: data.productOldPrice,
+                          productPrice: data.productPrice,
+                        );
+                      },
+                    ),
                   ),
                   const Divider(
                     indent: 16,
-                    endIndent:16 ,
+                    endIndent: 16,
                   ),
-                  ShowAllWidget(
-                      leftText: "What\'s trending"
-                  ),
+                  ShowAllWidget(leftText: "What\'s trending"),
                   buildTrendingProduct(
                     productImage:
-                    'https://assets.reebok.com/images/w_600,f_auto,q_auto/cd34290e1b57479399b3aae00137ab00_9366/Classics_Mesh_Tank_Top_White_FJ3179_01_standard.jpg',
+                        'https://assets.reebok.com/images/w_600,f_auto,q_auto/cd34290e1b57479399b3aae00137ab00_9366/Classics_Mesh_Tank_Top_White_FJ3179_01_standard.jpg',
                     productModel: 'Tank-tops',
                     productName: 'Classics mesh tank top',
                     productPrice: 15,
                   ),
                   buildTrendingProduct(
-                    productImage: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/d91819a9800047d1bb28ae920142ab44_9366/NMD_R1_Shoes_Red_GX9886_01_standard.jpg',
+                    productImage:
+                        'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/d91819a9800047d1bb28ae920142ab44_9366/NMD_R1_Shoes_Red_GX9886_01_standard.jpg',
                     productModel: 'NMD-R1 Shoes',
                     productName: 'Classics Men Shoes',
                     productPrice: 25,
                   ),
                   buildTrendingProduct(
-                    productImage: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/686b5cbb08bb4d21a2b3ad6600d47c18_9366/Ewood_Track_Pants_Blue_GT1818_23_hover_model.jpg',
+                    productImage:
+                        'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/686b5cbb08bb4d21a2b3ad6600d47c18_9366/Ewood_Track_Pants_Blue_GT1818_23_hover_model.jpg',
                     productModel: 'Ewood Track Pants',
                     productName: 'Men Orignals',
                     productPrice: 20,
@@ -272,7 +270,8 @@ class HomePage extends StatelessWidget {
                       shrinkWrap: true,
                       primary: true,
                       itemCount: singleProductData.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         childAspectRatio: 1.5,
                       ),
@@ -293,7 +292,6 @@ class HomePage extends StatelessWidget {
                           productName: data.productName,
                           productOldPrice: data.productOldPrice,
                           productPrice: data.productPrice,
-
                         );
                       },
                     ),
@@ -310,9 +308,7 @@ class HomePage extends StatelessWidget {
                 productData: accessoriesData,
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }
-

@@ -7,8 +7,9 @@ class SingleProductWidget extends StatefulWidget {
   final String productModel;
   final double productPrice;
   final double productOldPrice;
-  final Function onPressed;
-  const SingleProductWidget({super.key, 
+  final VoidCallback onPressed;
+  const SingleProductWidget({
+    super.key,
     required this.productImage,
     required this.productModel,
     required this.productName,
@@ -24,12 +25,12 @@ class SingleProductWidget extends StatefulWidget {
 class _SingleProductWidgetState extends State<SingleProductWidget> {
   bool isFave = false;
 
-  get onPressed => null;
+  // get onPressed => null;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
+    return InkWell(
+      onTap: widget.onPressed,
       child: Container(
         height: 250,
         margin: const EdgeInsets.all(10.0),

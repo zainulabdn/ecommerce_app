@@ -10,9 +10,9 @@ import '../../widgets/drop_button_widget.dart';
 import '../../widgets/single_product_widget.dart';
 
 class DetailScreen extends StatefulWidget {
-  final SingleProductModel  data;
+  final SingleProductModel data;
 
-  const DetailScreen({super.key,  required this.data});
+  const DetailScreen({super.key, required this.data});
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -26,38 +26,37 @@ class _DetailScreenState extends State<DetailScreen> {
     return PreferredSize(
       preferredSize: const Size.fromHeight(70),
       child: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          title: const Text(
-            "Reebok",
-            style: TextStyle(
-              color: AppColors.baseBlackColor,
-            ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "Reebok",
+          style: TextStyle(
+            color: AppColors.baseBlackColor,
           ),
-          actions: [
-            IconButton(
-              icon: SvgPicture.asset(
-                SvgImages.heart,
-                color: AppColors.baseBlackColor,
-                width: 35,
-                semanticsLabel: "Fave",
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: SvgPicture.asset(
-                SvgImages.upload,
-                color: AppColors.baseBlackColor,
-                width: 35,
-                semanticsLabel: "Fave",
-              ),
-              onPressed: () {},
-            ),
-          ],
         ),
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset(
+              SvgImages.heart,
+              color: AppColors.baseBlackColor,
+              width: 35,
+              semanticsLabel: "Fave",
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              SvgImages.upload,
+              color: AppColors.baseBlackColor,
+              width: 35,
+              semanticsLabel: "Fave",
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
     );
-
   }
 
   buildListTile() {
@@ -147,25 +146,26 @@ class _DetailScreenState extends State<DetailScreen> {
   buildColorsAndSize() {
     return Row(
       children: [
-        Expanded(
-          child: DropButton(
-            hintText: "Color",
-            item: const ["red", "blue", "white", "black", "pink"],
-            ratingController: _ratingController,
-          ),
-        ),
-        Expanded(
-          child: DropButton(
-            hintText: "Size",
-            item: const ["25", "30", "35", "40", "45"],
-            ratingController: _sizeController,
-          ),
-        )
+        // Expanded(
+        //   child: DropButton(
+        //     hintText: "Color",
+        //     item: const ["red", "blue", "white", "black", "pink"],
+        //     ratingController: _ratingController,
+        //   ),
+        // ),
+        // Expanded(
+        //   child: DropButton(
+        //     hintText: "Size",
+        //     item: const ["25", "30", "35", "40", "45"],
+        //     ratingController: _sizeController,
+        //   ),
+        // )
       ],
     );
   }
 
-  buildExpensionTileRow({required String firstTitle, required String secTitle}) {
+  buildExpensionTileRow(
+      {required String firstTitle, required String secTitle}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -241,9 +241,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     elevation: 0,
                     minWidth: double.infinity,
                     color: AppColors.basewhite60Color,
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     child: const Text(
                       "Size guide",
                       style: DetailScreenStyles.sizeGuideTextStyle,
@@ -271,9 +269,7 @@ class _DetailScreenState extends State<DetailScreen> {
           "Add to Cart",
           style: DetailScreenStyles.buttonTextStyle,
         ),
-        onPressed: () {
-
-        },
+        onPressed: () {},
       ),
     );
   }
@@ -344,4 +340,3 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 }
-
